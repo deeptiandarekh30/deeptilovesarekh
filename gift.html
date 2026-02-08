@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Gift 💝</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ff7aa2;
+  --pink-soft:#ffb3c6;
+  --dark:#160010;
+}
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BACKGROUND */
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top, #ff7aa255, transparent 45%),
+    radial-gradient(circle at bottom, #ffb3c655, transparent 45%),
+    var(--dark);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Nunito', sans-serif;
+  color:white;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  max-width:600px;
+  width:100%;
+  padding:55px 45px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(18px);
+  border-radius:40px;
+  text-align:center;
+  box-shadow:0 35px 90px rgba(0,0,0,0.55);
+  animation:fadeIn 1.4s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(40px)}
+  to{opacity:1; transform:none}
+}
+
+/* TEXT */
+h1{
+  font-family:'Pacifico', cursive;
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:1.2rem;
+  line-height:1.8;
+  margin-bottom:35px;
+}
+
+/* GIFT IMAGE */
+.gift-image{
+  width:170px;
+  height:170px;
+  object-fit:contain;
+  cursor:pointer;
+  transition:transform .4s ease, filter .4s ease, opacity .4s ease;
+  filter:drop-shadow(0 20px 45px rgba(0,0,0,.45));
+}
+
+.gift-image:hover{
+  transform:scale(1.1);
+}
+
+/* REVEAL MESSAGE */
+.reveal{
+  display:none;
+  margin-top:35px;
+  font-family:'Pacifico', cursive;
+  font-size:1.6rem;
+  color:var(--pink-soft);
+  animation:revealPop 1s ease forwards;
+}
+
+@keyframes revealPop{
+  from{opacity:0; transform:scale(0.85)}
+  to{opacity:1; transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Congratulations 💖</h1>
+
+  <p>
+    You said YES, and now it’s time for your gift.<br>
+    Click the gift to reveal it.
+  </p>
+
+  <img
+    src="gift.png"
+    alt="Gift"
+    class="gift-image"
+    id="gift"
+  >
+
+  <div class="reveal" id="reveal">
+    You are my forever gift, Deepti.<br>
+    Love, Arekh.
+  </div>
+</div>
+
+<script>
+const gift = document.getElementById("gift");
+const reveal = document.getElementById("reveal");
+
+gift.addEventListener("click", () => {
+  gift.style.opacity = "0";
+  gift.style.transform = "scale(0.8)";
+  
+  setTimeout(() => {
+    gift.style.display = "none";
+    reveal.style.display = "block";
+  }, 400);
+});
+</script>
+
+</body>
+</html>
